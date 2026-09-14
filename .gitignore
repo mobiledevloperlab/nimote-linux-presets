@@ -1,0 +1,4 @@
+# Generated local and CI test reports.
+test-results/*.json
+.cache/
+dist/

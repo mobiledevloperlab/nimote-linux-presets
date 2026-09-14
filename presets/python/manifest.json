@@ -1,0 +1,27 @@
+{
+  "id": "python",
+  "name": "Python Development",
+  "description": "Python 3 development environment with pip and venv",
+  "version": "1.0.4",
+  "status": "experimental",
+  "supportedArchitectures": [
+    "arm64",
+    "amd64"
+  ],
+  "supportedUbuntuVersions": [
+    "24.04"
+  ],
+  "estimatedDownloadSize": "55 MB",
+  "estimatedInstalledSize": "180 MB",
+  "dependencies": [
+    "minimal"
+  ],
+  "installScript": "install.sh",
+  "verifyScript": "verify.sh",
+  "sha256": {
+    "install.sh": "3115af03e080c9787b57c47066958add2ac1519a912a9d9434a101fa681c6be6",
+    "verify.sh": "5aa7f6212849c8f645607fa67819e003bcedc06dfb2688a0c59fa0c98a96ec76"
+  },
+  "requiresNetwork": true,
+  "requiresRestart": false
+}

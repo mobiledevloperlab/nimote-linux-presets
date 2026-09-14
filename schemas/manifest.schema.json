@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "minimumNimoteVersion",
+    "distro",
+    "architecture",
+    "runtime",
+    "presets"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "minimumNimoteVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "distro": {"const": "ubuntu"},
+    "architecture": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"enum": ["arm64", "amd64"]}
+    },
+    "releaseIntegrity": {
+      "type": "object",
+      "required": ["algorithm", "checksumsFile"],
+      "properties": {
+        "algorithm": {"const": "sha256"},
+        "checksumsFile": {"const": "checksums.sha256"}
+      },
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["minimumAndroidApi", "proot", "rootfs"],
+      "properties": {
+        "minimumAndroidApi": {"type": "integer", "minimum": 26},
+        "proot": {
+          "type": "object",
+          "required": ["version", "sourceUrl", "sha256", "arguments"],
+          "properties": {
+            "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$"},
+            "sourceUrl": {"type": "string", "format": "uri"},
+            "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "arguments": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+          },
+          "additionalProperties": false
+        },
+        "rootfs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["architecture", "distro", "distroVersion", "rootfsVersion", "archive", "sha256", "glibc", "defaultShell", "packageManager", "packageInventory", "baseUrl", "baseSha256"],
+            "properties": {
+              "architecture": {"enum": ["arm64", "amd64"]},
+              "distro": {"const": "ubuntu"},
+              "distroVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+              "rootfsVersion": {"type": "string", "minLength": 1},
+              "archive": {"type": "string", "pattern": "^ubuntu-minimal-(arm64|amd64)\\.tgz$"},
+              "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "glibc": {"type": "string", "minLength": 1},
+              "defaultShell": {"type": "string", "pattern": "^/bin/"},
+              "packageManager": {"const": "apt"},
+              "packageInventory": {"type": "string", "pattern": "^nimotecode/android/local_linux/assets/local_linux/packages(-amd64)?\\.tsv$"},
+              "baseUrl": {"type": "string", "format": "uri"},
+              "baseSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "testedOn": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["architecture", "androidVersion", "androidApi", "environment", "testedAt", "scope", "evidence", "status"],
+            "properties": {
+              "architecture": {"enum": ["arm64", "amd64"]},
+              "androidVersion": {"type": "string", "minLength": 1},
+              "androidApi": {"type": "integer", "minimum": 1},
+              "environment": {"type": "string", "minLength": 1},
+              "testedAt": {"type": "string", "format": "date"},
+              "scope": {"const": "nimotecode-runtime"},
+              "evidence": {"type": "string", "pattern": "^nimotecode/docs/"},
+              "status": {"enum": ["pass", "fail", "partial"]}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "manifest", "sha256"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "manifest": {"type": "string", "pattern": "^presets/[a-z0-9-]+/manifest\\.json$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

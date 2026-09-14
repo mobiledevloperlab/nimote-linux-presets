@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible problem with a preset or its validation.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, SSH keys, device identifiers, or private project data.
+  - type: input
+    id: preset
+    attributes:
+      label: Preset and version
+      placeholder: minimal 1.0.3
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Ubuntu version and architecture
+      placeholder: Ubuntu 24.04, arm64
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs
+      description: Remove credentials, private paths, and device identifiers.
+      render: shell
+    validations:
+      required: true

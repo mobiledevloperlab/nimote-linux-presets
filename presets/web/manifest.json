@@ -1,0 +1,27 @@
+{
+  "id": "web",
+  "name": "Web Development",
+  "description": "Node.js and npm development environment from Ubuntu packages",
+  "version": "1.0.4",
+  "status": "experimental",
+  "supportedArchitectures": [
+    "arm64",
+    "amd64"
+  ],
+  "supportedUbuntuVersions": [
+    "24.04"
+  ],
+  "estimatedDownloadSize": "45 MB",
+  "estimatedInstalledSize": "150 MB",
+  "dependencies": [
+    "minimal"
+  ],
+  "installScript": "install.sh",
+  "verifyScript": "verify.sh",
+  "sha256": {
+    "install.sh": "731fa925e5446f16cbc5e408d6dc480102b13c73a5e2e627343a39bcf3f63314",
+    "verify.sh": "0f26df09480df0a882eadcb148c42e83386b3cf26341a4c6f63b268639e292f0"
+  },
+  "requiresNetwork": true,
+  "requiresRestart": false
+}

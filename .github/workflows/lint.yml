@@ -1,0 +1,11 @@
+name: lint
+on: [pull_request, push]
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: sudo apt-get update && sudo apt-get install -y shellcheck python3-jsonschema
+      - run: scripts/lint.sh

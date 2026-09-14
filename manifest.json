@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "minimumNimoteVersion": "1.0.0",
+  "distro": "ubuntu",
+  "architecture": [
+    "arm64",
+    "amd64"
+  ],
+  "releaseIntegrity": {
+    "algorithm": "sha256",
+    "checksumsFile": "checksums.sha256"
+  },
+  "runtime": {
+    "minimumAndroidApi": 26,
+    "proot": {
+      "version": "5.1.107.92",
+      "sourceUrl": "https://github.com/termux/proot/archive/v5.1.107.92.zip",
+      "sha256": "29385d1ddb619a9c4449ab512bfd55032034b22f724ddf98fc95ff300ea32135",
+      "arguments": [
+        "--kill-on-exit",
+        "--link2symlink",
+        "-0",
+        "-r <rootfs>",
+        "-b /dev",
+        "-b /proc",
+        "-w <cwd>"
+      ]
+    },
+    "rootfs": [
+      {
+        "architecture": "arm64",
+        "distro": "ubuntu",
+        "distroVersion": "24.04",
+        "rootfsVersion": "ubuntu-base-24.04.3-arm64-20260905",
+        "archive": "ubuntu-minimal-arm64.tgz",
+        "sha256": "8bdb7c5991831f8999ef83f3777dcea6b338dc3d83d48e3bad898da660b437ee",
+        "glibc": "2.39-0ubuntu8.8",
+        "defaultShell": "/bin/bash",
+        "packageManager": "apt",
+        "packageInventory": "nimotecode/android/local_linux/assets/local_linux/packages.tsv",
+        "baseUrl": "https://cdimage.ubuntu.com/ubuntu-base/releases/noble/release/ubuntu-base-24.04.3-base-arm64.tar.gz",
+        "baseSha256": "7b2dced6dd56ad5e4a813fa25c8de307b655fdabc6ea9213175a92c48dabb048"
+      },
+      {
+        "architecture": "amd64",
+        "distro": "ubuntu",
+        "distroVersion": "24.04",
+        "rootfsVersion": "ubuntu-base-24.04.3-amd64-20260905",
+        "archive": "ubuntu-minimal-amd64.tgz",
+        "sha256": "13037cdfcc700f2f7d42fecb772b5477dbf0ef7d50604186904041c2ec93c246",
+        "glibc": "2.39-0ubuntu8.8",
+        "defaultShell": "/bin/bash",
+        "packageManager": "apt",
+        "packageInventory": "nimotecode/android/local_linux/assets/local_linux/packages-amd64.tsv",
+        "baseUrl": "https://cdimage.ubuntu.com/ubuntu-base/releases/noble/release/ubuntu-base-24.04.3-base-amd64.tar.gz",
+        "baseSha256": "6bc2cde3930ad088b3bb46fa45279e96d25bc3810f209850ecbe4722711874f9"
+      }
+    ]
+  },
+  "presets": [
+    {
+      "id": "minimal",
+      "manifest": "presets/minimal/manifest.json",
+      "sha256": "21e94b3be8bd7c9a95a278b4fb6398676e649bc8f63b22fab77a95916fc0c441"
+    },
+    {
+      "id": "python",
+      "manifest": "presets/python/manifest.json",
+      "sha256": "c5bb71db2c03f2162284a72eea33aeccf84f22bd1794e402e0bfe48f3054822e"
+    },
+    {
+      "id": "web",
+      "manifest": "presets/web/manifest.json",
+      "sha256": "c92823ddc647a6eeaed4f66acbb9e15148d9bd9759ab7344e5a2f2677f4e9691"
+    },
+    {
+      "id": "cpp",
+      "manifest": "presets/cpp/manifest.json",
+      "sha256": "ae9da7c6ff6406ab4f5448aaed6c861ee4433d849d671bb25eb215209c90e3a6"
+    }
+  ]
+}

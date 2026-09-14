@@ -1,0 +1,27 @@
+{
+  "id": "cpp",
+  "name": "C/C++ Development",
+  "description": "GCC, CMake, GDB and native build tooling",
+  "version": "1.0.3",
+  "status": "experimental",
+  "supportedArchitectures": [
+    "arm64",
+    "amd64"
+  ],
+  "supportedUbuntuVersions": [
+    "24.04"
+  ],
+  "estimatedDownloadSize": "85 MB",
+  "estimatedInstalledSize": "350 MB",
+  "dependencies": [
+    "minimal"
+  ],
+  "installScript": "install.sh",
+  "verifyScript": "verify.sh",
+  "sha256": {
+    "install.sh": "70af362618a533ab1181c50824e2bcc8f8c32f99e69713010a1ece21b27897b1",
+    "verify.sh": "75fd167caeecf4469d1bc285919459a17ab857fdab4be8d2419fdd974d825e34"
+  },
+  "requiresNetwork": true,
+  "requiresRestart": false
+}

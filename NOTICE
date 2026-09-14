@@ -1,0 +1,12 @@
+NimoteCode Linux Presets
+Copyright (c) 2026 NimoteCode contributors
+
+This repository distributes only its own documentation, JSON metadata, and
+shell/Python snippets. These repository contents are licensed under MIT; see
+LICENSE.
+
+No third-party source code, PRoot executable, Android executable, Ubuntu rootfs
+or Ubuntu package is bundled or redistributed here. Presets request packages
+from the user's configured APT repositories at runtime. Those packages retain
+their upstream licenses and notices and are outside this repository's source
+distribution. GitHub Actions references are CI configuration, not vendored code.

@@ -1,0 +1,25 @@
+{
+  "id": "minimal",
+  "name": "Minimal Development Tools",
+  "description": "Essential command-line tooling for the NimoteCode Local Linux Environment",
+  "version": "1.0.3",
+  "status": "experimental",
+  "supportedArchitectures": [
+    "arm64",
+    "amd64"
+  ],
+  "supportedUbuntuVersions": [
+    "24.04"
+  ],
+  "estimatedDownloadSize": "25 MB",
+  "estimatedInstalledSize": "90 MB",
+  "dependencies": [],
+  "installScript": "install.sh",
+  "verifyScript": "verify.sh",
+  "sha256": {
+    "install.sh": "4e7c588a8aabc460290a1fe18dd37b4f53cbb9bd36093d2f4828614c82d61537",
+    "verify.sh": "7fb8916bbdfdd39a6d1d5681799541554b93e6c2dbaf53b577f80a27e3658730"
+  },
+  "requiresNetwork": true,
+  "requiresRestart": false
+}

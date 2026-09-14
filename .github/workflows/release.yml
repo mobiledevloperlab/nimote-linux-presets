@@ -1,0 +1,55 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+jobs:
+  ubuntu:
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [minimal, python, web, cpp]
+    runs-on: ubuntu-24.04
+    container: ubuntu:24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: apt-get update && apt-get install -y --no-install-recommends bash ca-certificates git
+      - run: |
+          if [ "${{ matrix.preset }}" != minimal ]; then presets/minimal/install.sh; fi
+          scripts/test-preset.sh "${{ matrix.preset }}"
+  android-proot:
+    needs: ubuntu
+    permissions:
+      contents: read
+    environment: android-proot-release
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [minimal, python, web, cpp]
+        architecture: [arm64, amd64]
+    runs-on: [self-hosted, linux, "${{ matrix.architecture }}", android-proot]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Run fresh Android PRoot test
+        run: scripts/test-proot.sh "${{ matrix.preset }}"
+        env:
+          NIMOTE_PROOT_BIN: ${{ vars.NIMOTE_PROOT_BIN }}
+          NIMOTE_PROOT_ROOTFS: ${{ vars.NIMOTE_PROOT_ROOTFS }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: proot-${{ matrix.architecture }}-${{ matrix.preset }}
+          path: test-results/${{ matrix.preset }}-proot-${{ matrix.architecture }}.json
+  publish:
+    needs: android-proot
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: sudo apt-get update && sudo apt-get install -y shellcheck python3-jsonschema
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with: {path: test-results}
+      - run: scripts/release.sh
+      - uses: softprops/action-gh-release@5113cdc90fd4d541c801c55356214017bf5ae34b # v3
+        with: {files: 'manifest.json\nchecksums.sha256\ndist/*.tar.gz\ndist/*.sha256\ntest-results/**'}
