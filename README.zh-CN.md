@@ -74,3 +74,5 @@ scripts/test-all.sh
 - NimoteCode 内置 Local Linux 环境的对应源码和许可证声明单独发布在[本地 Linux 对应源码与许可证](https://nimotecode.com/zh/docs/local-linux-source)。
 
 提交修改前请阅读[贡献指南](CONTRIBUTING.md)、[行为准则](CODE_OF_CONDUCT.md)、[支持说明](SUPPORT.md)与[安全策略](SECURITY.md)。请保留 manifest/校验和约定，不要加入 rootfs 或压缩 runtime 资产，并确保 runtime 结论有文档化测试证据。
+
+开源许可范围、分发义务及待核实事项详见[开源合规说明](docs/open-source-compliance.md)。

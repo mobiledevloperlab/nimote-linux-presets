@@ -17,3 +17,17 @@ impact, supported architectures, and the exact validation command in the PR.
 
 All participants must follow the [Code of Conduct](CODE_OF_CONDUCT.md). Use the
 issue and pull-request templates to provide reproducible, security-safe reports.
+
+## Contribution licensing and provenance
+
+By submitting a contribution for inclusion, you agree to license your original
+contribution under this repository's MIT license. Submit only material you own
+or are authorized to contribute; this does not transfer copyright ownership.
+Identify any copied or adapted third-party material, its exact upstream revision,
+license and required notices in the PR, and preserve those notices. Maintainers
+must review compatibility before merging it; do not relabel third-party code as
+MIT or remove its attribution. This policy does not establish provenance for
+historical contributions, which must be checked separately if uncertain.
+
+See [Open-source compliance](docs/open-source-compliance.md) for the repository,
+APT dependency and application-runtime distribution boundaries.

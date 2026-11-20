@@ -14,3 +14,15 @@
 
 Experimental presets may be published for explicit testing but cannot be part
 of a Stable release gate.
+
+## License review before publication
+
+Inspect the generated preset archive and confirm it contains the unchanged
+`LICENSE` and `NOTICE` alongside the manifests and scripts. The archive SHA-256
+sidecar covers these files too; `checksums.sha256` covers the catalog and preset
+payload only. Retain any additional third-party notices required by future
+approved contributions. Review [Open-source compliance](open-source-compliance.md)
+when changing distribution contents. If an older published bundle omitted the
+license, provide its applicable LICENSE and NOTICE alongside that release and
+publish a corrected bundle under a new version; do not silently replace an
+existing asset or tag.

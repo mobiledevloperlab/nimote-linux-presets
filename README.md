@@ -88,3 +88,5 @@ This repository does not redistribute Ubuntu packages, a PRoot executable, an An
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md), [Support](SUPPORT.md), and [Security](SECURITY.md) before opening a change. Preserve the manifest/checksum contract, do not add rootfs or compressed runtime assets, and keep runtime claims backed by the documented test evidence.
+
+Compliance scope and redistribution guidance: [Open-source compliance](docs/open-source-compliance.md).
