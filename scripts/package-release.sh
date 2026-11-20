@@ -14,6 +14,6 @@ if [ -e "$archive" ] || [ -e "$checksum" ]; then
   exit 1
 fi
 
-tar -C "$root" -czf "$archive" manifest.json checksums.sha256 presets
+tar -C "$root" -czf "$archive" manifest.json checksums.sha256 presets LICENSE NOTICE
 sha256sum "$archive" > "$checksum"
 printf 'release bundle created: %s\n' "$archive"
